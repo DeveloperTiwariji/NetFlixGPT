@@ -1,7 +1,9 @@
+import Header from "./Header";
+
 const Browse = ()=>{
     return(
         <di>
-            <h1>Radhe Radhe</h1>
+            <Header />
         </di>
     )
 }
