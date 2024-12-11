@@ -6,6 +6,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {addUser} from "../utils/userSlice";
+import { BG_IMG, RADHA } from "../utils/constants";
 
 const Login = () =>{
     const[isSignInFort,setIsSignInForm] = useState(true);
@@ -30,11 +31,12 @@ const Login = () =>{
          .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/radharani-in-garden-vrindavan-das.jpg"
+            displayName: name.current.value, 
+            photoURL: RADHA,
           }).then(() => {
           const {uid, email, displayName, photoURL} = auth.currentUser;
           dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
-            navigate("/browse");
+            // navigate("/browse");
             // Profile updated!
             // ...
           }).catch((error) => {
@@ -59,7 +61,7 @@ const Login = () =>{
            const user = userCredential.user;
            
            console.log(user);
-           navigate("/browse");
+          //  navigate("/browse");
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -77,7 +79,7 @@ const Login = () =>{
         <di>
             <Header />
             <div className="absolute">
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/8e8ff9d3-17b4-4ce1-b571-06ba4e025cca/web_collection/IN-en-20241125-TRIFECTA-649c9db8-a195-4f78-a2e6-f4a02bda21f6_large.jpg"
+                <img src= {BG_IMG}
                 alt="logo" />
             </div>
             <form onSubmit={(e) => e.preventDefault()} className=" w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80 rounded-lg">
